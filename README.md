@@ -13,9 +13,19 @@ This project demonstrates a multi-container web application using Docker Compose
 
 ## Architecture
 
-```text
-Browser -> Nginx -> Node.js API -> MySQL
+```mermaid
+flowchart LR
+    U[User / Browser] -->|HTTP :80| NGINX[Nginx Reverse Proxy]
+    NGINX -->|proxy_pass| APP[App Service - Node.js]
+    APP -->|SQL| DB[(MySQL Database)]
+    subgraph COMPOSE[Docker Compose Network]
+      NGINX
+      APP
+      DB
+    end
 ```
+
+> Full diagram details: [ARCHITECTURE.md](ARCHITECTURE.md)
 
 ## Project Structure
 
