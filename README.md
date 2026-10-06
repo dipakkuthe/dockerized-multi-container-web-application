@@ -44,14 +44,20 @@ cp .env.example .env
 docker compose up --build
 ```
 
-Open:
-
-```text
-http://localhost:8080
-```
+Open: http://localhost:8080
 
 ## Stop
 
 ```bash
 docker compose down
 ```
+
+## Cleanup and Security
+
+Remove local containers, network and volumes after testing:
+
+```bash
+docker compose down -v
+```
+
+Do not commit `.env` files, database dumps or credentials. Use a local `.env` file and keep only `.env.example` in source control.
